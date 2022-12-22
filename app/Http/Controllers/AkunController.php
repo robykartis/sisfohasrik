@@ -63,7 +63,7 @@ class AkunController extends Controller
 
         if ($role == 'admin') {
             if ($image = $request->file('image')) {
-                $destinationPath = 'images/';
+                $destinationPath = 'images/akun';
                 $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
                 $image->move($destinationPath, $profileImage);
                 $input['image'] = "$profileImage";
@@ -80,7 +80,7 @@ class AkunController extends Controller
             );
         } else if ($role == 'operator') {
             if ($image = $request->file('image')) {
-                $destinationPath = 'images/';
+                $destinationPath = 'images/akun';
                 $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
                 $image->move($destinationPath, $profileImage);
                 $input['image'] = "$profileImage";
@@ -97,7 +97,7 @@ class AkunController extends Controller
             );
         } else {
             if ($image = $request->file('image')) {
-                $destinationPath = 'images/';
+                $destinationPath = 'images/akun';
                 $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
                 $image->move($destinationPath, $profileImage);
                 $input['image'] = "$profileImage";
