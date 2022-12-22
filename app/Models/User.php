@@ -21,22 +21,31 @@ class User extends Authenticatable
     protected $fillable = [
 
         'name',
-
         'email',
-
         'password',
-
         'type',
-
-        'role'
-
+        'role',
+        'image'
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
+    function image($real_size = false)
+    {
+        $thumbnail = $real_size ? '' : 'small_';
+
+        if ($this->image && file_exists(public_path('images/akunimage/' . $thumbnail . $this->image)))
+            return asset('images/akunimage/' . $thumbnail  . $this->image);
+        else
+            return asset('images/no_image.png');
+    }
+
+    function delete_image()
+    {
+        if ($this->image && file_exists(public_path('images/akunimage/' . $this->image)))
+            unlink(public_path('images/akunimage/' . $this->image));
+        if ($this->image && file_exists(public_path('images/akunimage/small_' . $this->image)))
+            unlink(public_path('images/akunimage/small_' . $this->image));
+    }
+
     protected $hidden = [
         'password',
         'remember_token',

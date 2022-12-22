@@ -13,10 +13,15 @@ Breadcrumbs::for('superadmin_index', function (BreadcrumbTrail $trail) {
     $trail->push('Dashboard', route('superadmin.index'));
 });
 // Dashboard Super Admin > Akun
-Breadcrumbs::for('superadmin_akun', function ($trail) {
-    $trail->parent('superadmin_index');
-    $trail->push('Akun', ('superadmin.index'));
+Breadcrumbs::for('akun', function ($trail) {
+    $trail->push('Akun', ('akun.index'));
 });
+// Dashboard Super Admin > Akun > Add
+Breadcrumbs::for('akun_add', function ($trail) {
+    $trail->parent('akun');
+    $trail->push('Tambah Akun ', ('akun.create'));
+});
+
 
 // Home > Blog
 // Breadcrumbs::for('blog', function (BreadcrumbTrail $trail) {

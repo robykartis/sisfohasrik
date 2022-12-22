@@ -24,7 +24,7 @@ return new class extends Migration
             /* Users: 0=>User, 1=>Admin, 2=>Manager */
             $table->string('role')->default();
             $table->tinyInteger('type')->default(0);
-            $table->string('foto')->nullable();
+            $table->string('image');
         });
     }
 

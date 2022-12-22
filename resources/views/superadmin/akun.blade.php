@@ -3,7 +3,7 @@
     Akun
 @endsection
 @section('breadcrumbs')
-    {{ Breadcrumbs::render('superadmin_akun') }}
+    {{ Breadcrumbs::render('akun') }}
 @endsection
 @section('content')
     <div class="content">
@@ -33,7 +33,7 @@
         @endif
         <div class="block block-rounded">
             <div class="block-header block-header-default">
-                <h3 class="block-title">Recent Orders</h3>
+                <h3 class="block-title">{{ $title }}</h3>
                 <div class="block-options space-x-1">
                     <button type="button" class="btn btn-sm btn-alt-secondary" data-toggle="class-toggle"
                         data-target="#one-dashboard-search-orders" data-class="d-none">

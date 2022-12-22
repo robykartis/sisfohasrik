@@ -19,7 +19,7 @@ class UserTableSeeder extends Seeder
         $user = [
 
             [
-                'role' => 'Super Admin',
+                'role' => 'superadmin',
 
                 'name' => 'Super Admin',
 
@@ -28,12 +28,13 @@ class UserTableSeeder extends Seeder
                 'type' => 0,
 
                 'password' => bcrypt('12341234'),
+                'image' => '001.jpg',
 
             ],
 
             [
 
-                'role' => 'Admin',
+                'role' => 'admin',
 
                 'name' => 'Admin',
 
@@ -42,12 +43,13 @@ class UserTableSeeder extends Seeder
                 'type' => 1,
 
                 'password' => bcrypt('12341234'),
+                'image' => '001.jpg',
 
             ],
 
             [
 
-                'role' => 'Operator',
+                'role' => 'operator',
 
                 'name' => 'Operator',
 
@@ -56,11 +58,12 @@ class UserTableSeeder extends Seeder
                 'type' => 2,
 
                 'password' => bcrypt('12341234'),
+                'image' => '001.jpg',
 
             ],
             [
 
-                'role' => 'Read Only',
+                'role' => 'readonly',
 
                 'name' => 'Read Only',
 
@@ -69,6 +72,7 @@ class UserTableSeeder extends Seeder
                 'type' => 3,
 
                 'password' => bcrypt('12341234'),
+                'image' => '001.jpg',
 
             ],
 
