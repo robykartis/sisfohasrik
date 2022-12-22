@@ -62,15 +62,12 @@ class AkunController extends Controller
         $password = bcrypt($request['password']);
 
         if ($role == 'admin') {
-            $image = $request->file('image');
-            $input['imagename'] = time() . '.' . $image->extension();
-            $destinationPath = public_path('berkas/akunimg/thumbnail');
-            $img = Image::make($image->path());
-            $img->resize(500, 500, function ($constraint) {
-                // $constraint->aspectRatio();
-            })->save($destinationPath . '/' . $input['imagename']);
-            $destinationPath = public_path('berkas/akunimg');
-            $image->move($destinationPath, $input['imagename']);
+            if ($image = $request->file('image')) {
+                $destinationPath = 'images/';
+                $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+                $image->move($destinationPath, $profileImage);
+                $input['image'] = "$profileImage";
+            }
             User::create(
                 [
                     'name' => $name,
@@ -78,12 +75,16 @@ class AkunController extends Controller
                     'password' => $password,
                     'type' => 1,
                     'role' => 'admin',
-                    "iamge" => $input['imagename'],
-
+                    "image" => $input['image'],
                 ]
-
             );
         } else if ($role == 'operator') {
+            if ($image = $request->file('image')) {
+                $destinationPath = 'images/';
+                $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+                $image->move($destinationPath, $profileImage);
+                $input['image'] = "$profileImage";
+            }
             User::create(
                 [
                     'name' => $name,
@@ -91,10 +92,16 @@ class AkunController extends Controller
                     'password' => $password,
                     'type' => 2,
                     'role' => 'operator',
+                    "image" => $input['image'],
                 ]
-
             );
         } else {
+            if ($image = $request->file('image')) {
+                $destinationPath = 'images/';
+                $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+                $image->move($destinationPath, $profileImage);
+                $input['image'] = "$profileImage";
+            }
             User::create(
                 [
                     'name' => $name,
@@ -102,9 +109,8 @@ class AkunController extends Controller
                     'password' => $password,
                     'type' => 3,
                     'role' => 'readonly',
-
+                    "image" => $input['image'],
                 ]
-
             );
         }
         return redirect()->route('akun.index')->with('store', 'Data Berhasil Disimpan');

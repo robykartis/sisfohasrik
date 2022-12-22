@@ -32,49 +32,49 @@ class UserTableSeeder extends Seeder
 
             ],
 
-            [
+            // [
 
-                'role' => 'admin',
+            //     'role' => 'admin',
 
-                'name' => 'Admin',
+            //     'name' => 'Admin',
 
-                'email' => 'admin@mail.com',
+            //     'email' => 'admin@mail.com',
 
-                'type' => 1,
+            //     'type' => 1,
 
-                'password' => bcrypt('12341234'),
-                'image' => '001.jpg',
+            //     'password' => bcrypt('12341234'),
+            //     'image' => '001.jpg',
 
-            ],
+            // ],
 
-            [
+            // [
 
-                'role' => 'operator',
+            //     'role' => 'operator',
 
-                'name' => 'Operator',
+            //     'name' => 'Operator',
 
-                'email' => 'operator@mail.com',
+            //     'email' => 'operator@mail.com',
 
-                'type' => 2,
+            //     'type' => 2,
 
-                'password' => bcrypt('12341234'),
-                'image' => '001.jpg',
+            //     'password' => bcrypt('12341234'),
+            //     'image' => '001.jpg',
 
-            ],
-            [
+            // ],
+            // [
 
-                'role' => 'readonly',
+            //     'role' => 'readonly',
 
-                'name' => 'Read Only',
+            //     'name' => 'Read Only',
 
-                'email' => 'readonly@mail.com',
+            //     'email' => 'readonly@mail.com',
 
-                'type' => 3,
+            //     'type' => 3,
 
-                'password' => bcrypt('12341234'),
-                'image' => '001.jpg',
+            //     'password' => bcrypt('12341234'),
+            //     'image' => '001.jpg',
 
-            ],
+            // ],
 
         ];
 
