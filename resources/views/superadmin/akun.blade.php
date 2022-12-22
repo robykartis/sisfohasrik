@@ -7,30 +7,7 @@
 @endsection
 @section('content')
     <div class="content">
-        @if (session('store'))
-            <div class="alert alert-success alert-dismissible" role="alert">
-                <p class="mb-0">
-                    Akun Berhasil Dihapus !
-                </p>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        @endif
-        @if (session('update'))
-            <div class="alert alert-success alert-dismissible" role="alert">
-                <p class="mb-0">
-                    Akun Berhasil Dihapus !
-                </p>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        @endif
-        @if (session('delete'))
-            <div class="alert alert-success alert-dismissible" role="alert">
-                <p class="mb-0">
-                    Akun Berhasil Dihapus !
-                </p>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        @endif
+
         <div class="block block-rounded">
             <div class="block-header block-header-default">
                 <h3 class="block-title">{{ $title }}</h3>
@@ -147,6 +124,8 @@
     <!-- jQuery (required for DataTables plugin) -->
     <script src="{{ asset('vendor/assets/js/lib/jquery.min.js') }}"></script>
 
+    <script src="{{ asset('vendor/assets/js/plugins/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
+
     <!-- Page JS Plugins -->
     <script src="{{ asset('vendor/assets/js/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('vendor/assets/js/plugins/datatables-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
@@ -174,8 +153,7 @@
                         <div class="block-header block-header-default">
                             <h3 class="block-title">Hapus Akun</h3>
                             <div class="block-options">
-                                <button type="button" class="btn-block-option" data-bs-dismiss="modal"
-                                    aria-label="Close">
+                                <button type="button" class="btn-block-option" data-bs-dismiss="modal" aria-label="Close">
                                     <i class="fa fa-fw fa-times"></i>
                                 </button>
                             </div>
@@ -207,133 +185,27 @@
             })
         })
     </script>
-@endpush
-{{-- @push('javascript-internal')
-    <script type="text/javascript">
-        $(function() {
-
-            /*------------------------------------------
-             --------------------------------------------
-             Pass Header Token
-             --------------------------------------------
-             --------------------------------------------*/
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
+    <script>
+        @if (session('store'))
+            One.helpers('jq-notify', {
+                type: 'success',
+                icon: 'fa fa-check me-1',
+                message: 'Akun Berhasil Disimpan'
             });
-
-            /*------------------------------------------
-            --------------------------------------------
-            Render DataTable
-            --------------------------------------------
-            --------------------------------------------*/
-            var table = $('.data-table').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: "{{ route('products-ajax-crud.index') }}",
-                columns: [{
-                        data: 'DT_RowIndex',
-                        name: 'DT_RowIndex'
-                    },
-                    {
-                        data: 'name',
-                        name: 'name'
-                    },
-                    {
-                        data: 'detail',
-                        name: 'detail'
-                    },
-                    {
-                        data: 'action',
-                        name: 'action',
-                        orderable: false,
-                        searchable: false
-                    },
-                ]
+        @endif
+        @if (session('update'))
+            One.helpers('jq-notify', {
+                type: 'success',
+                icon: 'fa fa-check me-1',
+                message: 'Akun Berhasil Diperbaharui'
             });
-
-            /*------------------------------------------
-            --------------------------------------------
-            Click to Button
-            --------------------------------------------
-            --------------------------------------------*/
-            $('#createNewProduct').click(function() {
-                $('#saveBtn').val("create-product");
-                $('#product_id').val('');
-                $('#productForm').trigger("reset");
-                $('#modelHeading').html("Create New Product");
-                $('#ajaxModel').modal('show');
+        @endif
+        @if (session('delete'))
+            One.helpers('jq-notify', {
+                type: 'success',
+                icon: 'fa fa-check me-1',
+                message: 'Akun Berhasil Dihapus'
             });
-
-            /*------------------------------------------
-            --------------------------------------------
-            Click to Edit Button
-            --------------------------------------------
-            --------------------------------------------*/
-            $('body').on('click', '.editProduct', function() {
-                var product_id = $(this).data('id');
-                $.get("{{ route('products-ajax-crud.index') }}" + '/' + product_id + '/edit', function(
-                    data) {
-                    $('#modelHeading').html("Edit Product");
-                    $('#saveBtn').val("edit-user");
-                    $('#ajaxModel').modal('show');
-                    $('#product_id').val(data.id);
-                    $('#name').val(data.name);
-                    $('#detail').val(data.detail);
-                })
-            });
-
-            /*------------------------------------------
-            --------------------------------------------
-            Create Product Code
-            --------------------------------------------
-            --------------------------------------------*/
-            $('#saveBtn').click(function(e) {
-                e.preventDefault();
-                $(this).html('Sending..');
-
-                $.ajax({
-                    data: $('#productForm').serialize(),
-                    url: "{{ route('products-ajax-crud.store') }}",
-                    type: "POST",
-                    dataType: 'json',
-                    success: function(data) {
-
-                        $('#productForm').trigger("reset");
-                        $('#ajaxModel').modal('hide');
-                        table.draw();
-
-                    },
-                    error: function(data) {
-                        console.log('Error:', data);
-                        $('#saveBtn').html('Save Changes');
-                    }
-                });
-            });
-
-            /*------------------------------------------
-            --------------------------------------------
-            Delete Product Code
-            --------------------------------------------
-            --------------------------------------------*/
-            $('body').on('click', '.deleteProduct', function() {
-
-                var product_id = $(this).data("id");
-                confirm("Are You sure want to delete !");
-
-                $.ajax({
-                    type: "DELETE",
-                    url: "{{ route('products-ajax-crud.store') }}" + '/' + product_id,
-                    success: function(data) {
-                        table.draw();
-                    },
-                    error: function(data) {
-                        console.log('Error:', data);
-                    }
-                });
-            });
-
-        });
+        @endif
     </script>
-@endpush --}}
+@endpush
