@@ -120,8 +120,8 @@
 
                 <li class="nav-main-heading">Super Admin</li>
                 <li class="nav-main-item">
-                    <a class="nav-main-link {{ set_active(['superadmin.akun']) }}"
-                        href="{{ route('superadmin.akun') }}">
+                    <a class="nav-main-link {{ set_active(['akun.index', 'akun.create']) }}"
+                        href="{{ route('akun.index') }}">
                         <i class="nav-main-link-icon si si-users"></i>
                         <span class="nav-main-link-name">Akun</span>
                     </a>

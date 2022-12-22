@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AkunController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SuperadminController;
 use Illuminate\Support\Facades\Auth;
@@ -32,8 +33,9 @@ Super Admin
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:superadmin'])->group(function () {
 
-    Route::get('/superadmin/akun', [SuperadminController::class, 'akun'])->name('superadmin.akun');
-    Route::resource('superadmin', SuperadminController::class);
+    Route::get('superadmin', [SuperadminController::class, 'index'])->name('superadmin.index');
+    // Akun
+    Route::resource('superadmin/akun', AkunController::class);
 });
 
 /*------------------------------------------

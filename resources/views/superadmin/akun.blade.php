@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('title')
+    Akun
 @endsection
 @section('breadcrumbs')
     {{ Breadcrumbs::render('superadmin_akun') }}
@@ -39,7 +40,8 @@
                         <i class="fa fa-search"></i>
                     </button>
                     <div class="d-inline-block">
-                        <a type="button" class="btn btn-sm btn-alt-primary" aria-haspopup="true" aria-expanded="false">
+                        <a type="button" href="{{ route('akun.create') }}" class="btn btn-sm btn-alt-primary"
+                            aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-fw fa-user-plus"></i>
                             Tambah
                         </a>
@@ -105,7 +107,7 @@
                                                 <i class="fa fa-fw fa-eye"></i>
                                             </a>
                                             <button class="btn btn-sm btn-alt-danger delete"
-                                                data-url="{{ route('superadmin.destroy', $user->id) }}">
+                                                data-url="{{ route('akun.destroy', $user->id) }}">
                                                 <i class="fa fa-fw fa-trash-can"></i>
                                             </button>
                                         </div>
