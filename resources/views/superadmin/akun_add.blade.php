@@ -68,9 +68,8 @@
                         </div>
                         <div class="col-lg-8 col-xl-6">
                             <a class="img-link img-link-zoom-in img-thumb img-lightbox"
-                                href="{{ asset('vendor/assets/media/photos/photo2@2x.jpg') }}">
-                                <img class="img-fluid" src="{{ asset('vendor/assets/media/photos/photo2.jpg') }}"
-                                    alt="">
+                                href="{{ asset('images/akun/20221222184916.jpg') }}">
+                                <img class="img-fluid" src="{{ asset('images/akun/20221222184916.jpg') }}" alt="">
                             </a>
                             <div class="mb-4 mt-2">
                                 <input type="file" name="image" class="form-control"
