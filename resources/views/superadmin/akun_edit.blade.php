@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('title')
-    Tambah Akun
+    Edit Akun
 @endsection
 @section('breadcrumbs')
-    {{ Breadcrumbs::render('akun_add') }}
+    {{ Breadcrumbs::render('akun_edit') }}
 @endsection
 @section('content')
     <div class="content">
@@ -13,8 +13,9 @@
                 <h3 class="block-title">{{ $title }}</h3>
             </div>
             <div class="block-content">
-                <form action="{{ route('akun.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('akun.update', $user->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     <div class="row push">
                         <div class="col-lg-4">
                             <p class="fs-sm text-muted">
@@ -25,12 +26,12 @@
                             <div class="mb-4">
                                 <label class="form-label" for="one-profile-edit-username">Nama</label>
                                 <input type="text" value="{{ $user->name }}" class="form-control"
-                                    id="one-profile-edit-username" name="name" placeholder="Masukan Nama..">
+                                    id="one-profile-edit-username" name="name">
                             </div>
                             <div class="mb-4">
                                 <label class="form-label" for="one-profile-edit-email">Email Address</label>
                                 <input type="email" class="form-control" id="one-profile-edit-email" name="email"
-                                    value="{{ $user->email }}" placeholder="Masukan Email..">
+                                    value="{{ old('email') }}" placeholder="Masukan Email..">
                             </div>
                             <div class="mb-4">
                                 <label class="form-label" for="one-profile-edit-name">Kata Sandi</label>
@@ -39,7 +40,7 @@
                             </div>
 
                             <div class="mb-4">
-                                <label class="form-label" for="one-profile-edit-email">Akses</label>
+                                <label class="form-label" for="one-profile-edit-email">Email Address</label>
                                 <select class="form-select" id="example-select-floating" name="role"
                                     aria-label="Floating label select example">
                                     <option selected disabled>Silahkan Pilih Akses Akun</option>

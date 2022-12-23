@@ -14,19 +14,15 @@ class AkunController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(Request $request)
+    public function index()
     {
         $title = 'List Akun';
-        $search = $request->search;
-        $search_akun = User::when($search, function ($query, $search) {
-            return $query->where('name', 'like', "%{$search}%");
-        })->paginate(2);
         $users = User::latest()->paginate(2);
         return view('superadmin.akun', [
             'title' => $title,
             'users' => $users,
-            'search_akun' => $search_akun
-        ]);
+
+        ])->with('i', (request()->input('page', 1) - 1) * 5);;
     }
 
     public function create()
@@ -118,8 +114,10 @@ class AkunController extends Controller
 
     public function edit(User $user)
     {
-        return view('superadmin.edit_akun', [
-            'user' => $user
+        $title = 'Edit Akun';
+        return view('superadmin.akun_edit', [
+            'user' => $user,
+            'title' => $title
         ]);
     }
 

@@ -31,7 +31,7 @@
                     <div class="push">
                         <div class="input-group">
                             <input type="text" class="form-control form-control-alt" id="one-ecom-orders-search"
-                                name="search" value="{{ request()->search }}" placeholder="Search all orders..">
+                                name="search" placeholder="Search all orders..">
 
                             <button type="submit" class="input-group-text bg-body border-0">
                                 <i class="fa fa-search"></i>
@@ -76,10 +76,11 @@
                                     <td class="d-none d-sm-table-cell">
                                         <div class="text-center">
 
-                                            <a type="button" class="btn btn-sm btn-alt-info" href="">
+                                            <a type="button" class="btn btn-sm btn-alt-primary"
+                                                href="{{ route('akun.edit', $user->id) }}">
                                                 <i class="fa fa-fw fa-pencil"></i>
                                             </a>
-                                            <a type="button" class="btn btn-sm btn-alt-danger" aria-haspopup="true"
+                                            <a type="button" class="btn btn-sm btn-alt-info" aria-haspopup="true"
                                                 aria-expanded="false">
                                                 <i class="fa fa-fw fa-eye"></i>
                                             </a>
@@ -104,8 +105,8 @@
             <div class="block-content block-content-full bg-body-light">
                 <!-- Pagination -->
                 <nav aria-label="Photos Search Navigation">
-                    {{ $search_akun->appends(['search' => request()->search])->links('vendor.pagination.bootstrap-5') }}
-                    {{-- {!! $users->withQueryString()->links('pagination::bootstrap-5') !!} --}}
+                    {{-- {{ $search_akun->appends(['search' => request()->search])->links('vendor.pagination.bootstrap-5') }} --}}
+                    {!! $users->withQueryString()->links('vendor.pagination.bootstrap-5') !!}
                 </nav>
                 <!-- END Pagination -->
             </div>

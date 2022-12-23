@@ -21,6 +21,11 @@ Breadcrumbs::for('akun_add', function ($trail) {
     $trail->parent('akun');
     $trail->push('Tambah Akun ', ('akun.create'));
 });
+// Dashboard Super Admin > Akun > Edit
+Breadcrumbs::for('akun_edit', function ($trail) {
+    $trail->parent('akun');
+    $trail->push('Edit Akun ', ('akun.edit'));
+});
 
 
 // Home > Blog
