@@ -33,6 +33,10 @@
     <link rel="stylesheet" id="css-main" href="{{ asset('vendor/assets/css/oneui.min.css') }}">
 
 
+
+
+
+
     {{-- css:external --}}
     @stack('css-external')
     {{-- css:internal --}}
@@ -79,6 +83,13 @@
 
     <!-- Page JS Code -->
     <script src="{{ asset('vendor/assets/js/pages/be_pages_dashboard.min.js') }}"></script>
+
+    {{-- Costum js Ex ROBY --}}
+    {{-- <script src="{{ asset('js/jquery-5.5.1.js.js') }}"></script>
+    <script src="{{ asset('js/jquery.bs5.js') }}"></script>
+    <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script> --}}
+
+
 
     @stack('modal')
     @stack('javascript-external')

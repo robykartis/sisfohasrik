@@ -24,13 +24,13 @@
                         <div class="col-lg-8 col-xl-5">
                             <div class="mb-4">
                                 <label class="form-label" for="one-profile-edit-username">Nama</label>
-                                <input type="text" value="{{ $user->name }}" class="form-control"
-                                    id="one-profile-edit-username" name="name" placeholder="Masukan Nama..">
+                                <input type="text" class="form-control" id="one-profile-edit-username" name="name"
+                                    placeholder="Masukan Nama..">
                             </div>
                             <div class="mb-4">
                                 <label class="form-label" for="one-profile-edit-email">Email Address</label>
                                 <input type="email" class="form-control" id="one-profile-edit-email" name="email"
-                                    value="{{ $user->email }}" placeholder="Masukan Email..">
+                                    placeholder="Masukan Email..">
                             </div>
                             <div class="mb-4">
                                 <label class="form-label" for="one-profile-edit-name">Kata Sandi</label>

@@ -36,6 +36,7 @@ Route::middleware(['auth', 'user-access:superadmin'])->group(function () {
     Route::get('superadmin', [SuperadminController::class, 'index'])->name('superadmin.index');
     // Akun
     Route::resource('akun', AkunController::class);
+    Route::get('akun/json', [AkunController::class, 'json'])->name('json.index');
 });
 
 /*------------------------------------------

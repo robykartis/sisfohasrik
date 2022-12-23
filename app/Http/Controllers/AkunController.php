@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image;
+use Yajra\DataTables\DataTables;
 
 class AkunController extends Controller
 {
@@ -18,18 +19,37 @@ class AkunController extends Controller
     {
         $title = 'List Akun';
         $users = User::latest()->paginate(2);
-        return view('superadmin.akun', [
+        return view('superadmin.akun.index', [
             'title' => $title,
             'users' => $users,
-
         ])->with('i', (request()->input('page', 1) - 1) * 5);;
+    }
+
+    public function json(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = User::select('id', 'name');
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function ($row) {
+
+                    $btn = '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View</a>';
+
+                    return $btn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+        return view('superadmin.akun.index');
     }
 
     public function create()
     {
+
         $title = 'Tambah Akun Baru';
-        return view('superadmin.akun_add', [
-            'title' => $title
+        return view('superadmin.akun.akun_add', [
+            'title' => $title,
+
         ]);
     }
 
@@ -112,13 +132,14 @@ class AkunController extends Controller
         return redirect()->route('akun.index')->with('store', 'Data Berhasil Disimpan');
     }
 
-    public function edit(User $user)
+    public function edit(Request $reques, User $user)
     {
-        $title = 'Edit Akun';
-        return view('superadmin.akun_edit', [
-            'user' => $user,
-            'title' => $title
-        ]);
+        dd($user);
+        // $title = 'Edit Akun';
+        // return view('superadmin.akun_edit', [
+        //     'user' => $user,
+        //     'title' => $title
+        // ]);
     }
 
     public function destroy($id)
